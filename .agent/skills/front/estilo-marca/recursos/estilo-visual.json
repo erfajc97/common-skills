@@ -1,0 +1,52 @@
+{
+    "marca": "Escapadas (Old Money x Art Deco)",
+    "objetivo": "Mantener consistencia visual estilo 'Old Money', Art Deco y lujo sobrio.",
+    "paleta": {
+        "principal": "#1A332C",
+        "secundario": "#F0EAD6",
+        "acento": "#C5A059",
+        "fondo": "#0D1F1A",
+        "superficie": "#2F4538",
+        "texto": {
+            "principal": "#F0EAD6",
+            "secundario": "#D2CFC4",
+            "invertido": "#0D1F1A"
+        },
+        "bordes": "#C5A059"
+    },
+    "tipografia": {
+        "titulares": "The Seasons, Pinyon Script (para acentos)",
+        "cuerpo": "Calgary, Noto Serif Display",
+        "pesos": {
+            "normal": 400,
+            "medio": 500,
+            "negrita": 700
+        },
+        "notas": "Usar Pinyon Script solo en detalles grandilocuentes o firmas. Titulares principales en The Seasons/Calgary."
+    },
+    "formas": {
+        "radio_tarjeta": "2px",
+        "radio_boton": "0px",
+        "radio_input": "0px",
+        "estilo": "Geometrico, Art Deco, Lineas finas y patrones"
+    },
+    "espaciado": {
+        "xs": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "lg": "24px",
+        "xl": "32px",
+        "xxl": "64px"
+    },
+    "texturas": [
+        "Marmol (blanco/verde)",
+        "Madera oscura",
+        "Cuero",
+        "Patrones Art Deco dorados"
+    ],
+    "componentes": {
+        "boton_principal": "Fondo oscuro o dorado, bordes dorados finos, texto Serif, elegante.",
+        "tarjetas": "Fondo oscuro/verde, borde dorado fino, textura sutil, tipografía elegante.",
+        "layout": "Simétrico, elegante, uso de espacio negativo, marcos decorativos."
+    }
+}
