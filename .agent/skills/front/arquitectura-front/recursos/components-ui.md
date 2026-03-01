@@ -68,9 +68,13 @@ const CustomModalNextUI = ({ isOpen, onClose, children, headerContent, footerCon
 )
 ```
 
+## Botones (HeroUI)
+- **Siempre** usar `Button` de `@heroui/react`; **nunca** `<button>` HTML. Usar la prop `onPress` para la acción (no `onClick`).
+- **Legibilidad**: En botones con **fondo claro** (p. ej. `bg-form-bg`, `bg-surface` en contexto claro) usar **texto oscuro** (`text-form-foreground`) para que se lea bien. No usar `text-primary-foreground` en fondos claros — ese color está pensado para fondos oscuros y genera bajo contraste. Ver `tipos-y-estilos.md` para tokens del tema.
+
 ## Reglas de Uso
 1. **Tablas**: Definir `columns` y función `renderCell` switch-case en el componente consumidor. Usar `CustomTableNextUi` de `src/app/components/UI`.
-2. **Botones**: Usar `Button` de `@heroui/react`. Prop `onPress` en lugar de `onClick`.
+2. **Botones**: Usar `Button` de `@heroui/react` con `onPress`. No usar `<button>`. En fondos claros, asegurar contraste con `text-form-foreground` (ver sección Botones arriba).
 3. **Paginación**: Siempre via `CustomPagination` al pie de la tabla.
 4. **Modales**: Usar `CustomModalNextUI` para formularios y confirmaciones.
 5. **Reutilización**: Mismo formulario para crear y editar; el hook decide create vs update según id/entidad.

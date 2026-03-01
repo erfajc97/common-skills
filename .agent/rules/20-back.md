@@ -15,6 +15,17 @@ globs: "escapadas-back/**/*.{ts,prisma,json}, escapadas-back/**/prisma/**/*, esc
 - DB: PostgreSQL
 - Validación: Zod
 
+## Skills del proyecto (back)
+- **.agent/skills/back/entornos-env**: Soportar NODE_ENV (development, staging, production). Configuración sensible al entorno (throttle, etc.) con límites altos en desarrollo y estrictos en staging/production. Documentar NODE_ENV en .env.example. Ver `recursos/env-node-env.md`.
+- **.agent/skills/back/dto-zod-lint**: Al escribir o modificar DTOs/schemas con Zod:
+  - No usar aserciones no-null (`!`) innecesarias en refines; usar guards, desestructuración o comprobaciones explícitas.
+  - Formatear mensajes y opciones largas en refines (varias líneas) para cumplir el linter.
+- **.agent/skills/back/errores-linter-prettier**: Al escribir o modificar servicios, controladores o DTOs:
+  - Firmas de métodos con parámetros largos: partir en varias líneas.
+  - Decoradores Swagger (`@ApiResponse`, etc.) con objetos largos: partir propiedades en varias líneas.
+  - Ver `recursos/errores-linter-prettier.md` para patrones a evitar.
+- **.agent/skills/back/errores-frecuentes**: Al escribir o modificar código en el back, tener en cuenta los patrones de `recursos/errores-frecuentes.md`: `new Date().toLocaleDateString()`, propiedad `html` larga, objetos en decoradores en una línea, asignaciones cortas partidas innecesariamente.
+
 ## Skills vendor que SIEMPRE deben guiar el trabajo
 - .agents/skills/nestjs-best-practices
 - .agents/skills/nestjs-guards-interceptors
@@ -52,9 +63,12 @@ globs: "escapadas-back/**/*.{ts,prisma,json}, escapadas-back/**/prisma/**/*, esc
 
 ## Checklist antes de entregar cambios backend
 - [ ] Inputs validados con Zod (body/query/params)
+- [ ] DTOs Zod: sin `!` innecesarios en refines; mensajes/opciones largas en varias líneas (ver skill dto-zod-lint)
+- [ ] Linter/Prettier: firmas de métodos y decoradores API formateados en varias líneas cuando la línea es larga (ver skill errores-linter-prettier)
 - [ ] Errores mapeados correctamente a HTTP (sin mensajes crudos)
 - [ ] Guard(s)/interceptor(s) aplicados si corresponde
 - [ ] Prisma queries eficientes (sin N+1, selects adecuados)
 - [ ] Código sin lints/warnings y consistente con el repo
 - [ ] No hardcode de secrets / conexión / credenciales
 - [ ] Listados con paginación usan DTO común (PaginationQueryDto) y PaginatedResponse
+- [ ] Entornos: si hay rate limit o config por entorno, usar NODE_ENV (development | staging | production) y documentar en .env.example (skill entornos-env)

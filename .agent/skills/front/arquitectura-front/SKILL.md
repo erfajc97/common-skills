@@ -1,12 +1,13 @@
 ---
 name: arquitectura-front
-description: Estándar de Screaming Architecture para el frontend. Define estructura por features, queries compartidas, mutations, servicios, componentes UI, tipos, estilos y assets.
+description: Estándar de Screaming Architecture para el frontend. Define estructura por features, queries compartidas, mutations, servicios, componentes UI, tipos, estilos y assets. Incluye reglas para no repetir errores de linter/TypeScript (aserciones innecesarias, optional chaining o condicionales redundantes cuando el tipo ya lo garantiza); ver recursos/errores-linter-typescript.md.
 ---
 
 # Skill: Arquitectura Front (Screaming Architecture)
 
 ## Cuándo usar este Skill
 - **Feature**: Al crear o refactorizar una feature (CRUD, auth, etc.).
+- **Landing / sitio público**: Al organizar o tocar la feature que agrupa home, listados públicos y detalle (hero, layout, secciones). Ver `recursos/estructura-landing.md`.
 - **UI**: Al crear tablas, modales, paginación o formularios.
 - **Queries/Mutations**: Al cargar datos o al mutar (crear, editar, eliminar).
 - **Routing**: Al definir rutas protegidas.
@@ -24,6 +25,8 @@ description: Estándar de Screaming Architecture para el frontend. Define estruc
 | Iconos y SVG | `recursos/iconos-y-assets.md` | SVG en `src/assets/svg/` como componentes; importar, no inline. |
 | Componentes UI | `recursos/components-ui.md` | HeroUI + CustomComponents; no repetir; SVGs en assets. |
 | Flujo de datos | `recursos/patrones-codigo.md` | Componente → Hook → Mutation/Query → Service → axios. |
+| Errores linter/TS | `recursos/errores-linter-typescript.md` | No aserciones innecesarias, no optional chaining ni condicionales redundantes con el tipo. Orden de importaciones. |
+| Estructura landing | `recursos/estructura-landing.md` | Feature landing: puntos de entrada en raíz, hero/layout/sections, hooks por página, SectionHeader, tema sin hex. Reutilizable en otros proyectos. |
 | Axios | `recursos/axios-config.ts` | Una instancia; servicios sin baseURL duplicado. |
 | Estado auth | `recursos/state-auth.ts` | Store de autenticación. |
 
@@ -39,8 +42,9 @@ description: Estándar de Screaming Architecture para el frontend. Define estruc
 - [ ] **Create/Edit**: ¿Mismo formulario; el hook decide create vs update por id/entidad?
 - [ ] **Toasts**: ¿Sonner/Toast en las mutations (onSuccess/onError)?
 - [ ] **Estilos**: ¿Clases del tema (text-primary, bg-form-primary, etc.) y no hex ni `var(--...)` en componentes?
+- [ ] **Linter/TS**: ¿Sin aserciones innecesarias (`as`), optional chaining (`?.`) ni condicionales redundantes cuando el tipo ya lo garantiza? Ver `recursos/errores-linter-typescript.md`.
 - [ ] **SVG**: ¿Iconos en `assets/svg/` e importados, no inline?
-- [ ] **UI**: ¿HeroUI y CustomComponents (CustomTableNextUi, CustomModalNextUI, CustomPagination)?
+- [ ] **UI**: ¿HeroUI y CustomComponents (CustomTableNextUi, CustomModalNextUI, CustomPagination)? ¿Botones con `Button` y `onPress` (nunca `<button>`)? ¿Texto de botones legible (en fondos claros usar `text-form-foreground`)? Ver `recursos/components-ui.md`.
 
 ## Workflow al crear una feature
 

@@ -27,24 +27,29 @@ Las rules, la arquitectura-front, estilo-marca y logica-negocio-back están pens
 
 ## Orden de autoridad (si hay conflicto)
 1) **Rules globales** (.agent/rules/00-global.md)
-2) **Arquitectura y convenciones del proyecto** (.agent/skills/front/arquitectura-front) — prioridad sobre el resto de skills.
-3) **Otras skills del proyecto** (.agent/skills/front/):
+2) **Rules de seguridad** (.agent/rules/05-security.md) — prioridad en todo lo que afecte a seguridad (formularios, auth, uploads, APIs públicas, datos sensibles).
+3) **Arquitectura y convenciones del proyecto** (.agent/skills/front/arquitectura-front) — prioridad sobre el resto de skills.
+4) **Otras skills del proyecto** (.agent/skills/front/):
    - estilo-marca (marca, textos, guía visual)
    - logica-negocio-back (API y lógica de negocio del back)
    - figma (diseños, si aplica)
-4) **Rules de front** (.agent/rules/10-front.md)
-5) **Skills vendor** (.agents/skills/*) — buenas prácticas y contexto de librerías; aplicarlas sin contradecir la arquitectura.
-6) Preferencias mías (lo último)
+5) **Rules de front** (.agent/rules/10-front.md)
+6) **Skills vendor** (.agents/skills/*) — buenas prácticas y contexto de librerías; aplicarlas sin contradecir la arquitectura.
+7) Preferencias mías (lo último)
+
+## Seguridad (obligatorio)
+- En **formularios, auth, datos sensibles, subida de archivos o llamadas a APIs públicas**: consultar siempre las **rules de seguridad** (.agent/rules/05-security.md) y la skill **seguridad-fullstack** (.agent/skills/common/seguridad-fullstack/). El agente de seguridad (.agent/agents/security.md) es la referencia para dudas de seguridad.
 
 ## MCPs
 - Si hay **MCPs conectados** (Context7, documentación, etc.): **usarlos** para documentación actualizada y ejemplos de librerías.
 
 ## Checklist obligatorio antes de entregar cambios
+- [ ] **Seguridad**: Consulté `.agent/rules/05-security.md` y `.agent/skills/common/seguridad-fullstack/` en formularios, auth, uploads o APIs. Validación con límites (.max()) alineada al backend; no envío de buffers arbitrarios en contact/auth/profile.
 - [ ] Respeté la **arquitectura** definida en `.agent/skills/front/arquitectura-front/` (queries compartidas, mutations, tipos, estilos, componentes, iconos en assets).
 - [ ] Respeté **marca/textos** en `.agent/skills/front/estilo-marca/`.
 - [ ] Consulté **lógica de negocio/API** en `.agent/skills/front/logica-negocio-back/` cuando aplique.
 - [ ] No rompí la arquitectura: arquitectura-front tiene prioridad sobre skills vendor.
-- [ ] Si hay formularios/inputs: validación con zod (o lo indicado por reglas).
+- [ ] Si hay formularios/inputs: validación con zod (o lo indicado por reglas), con .max() según seguridad-fullstack.
 - [ ] Si hay data: TanStack Query (queries desde tanstack-queries; mutations en mutations/; caching, invalidación).
 - [ ] Si hay navegación: TanStack Router según routing-patterns.
 - [ ] Si hay estado global: Zustand (patrón consistente con state-auth).

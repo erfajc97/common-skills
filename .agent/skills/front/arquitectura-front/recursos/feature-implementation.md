@@ -86,10 +86,10 @@ export const UsersTable = ({ users, onEditClick, ...props }) => {
 ```
 
 ## Claves
-1. **Componentes**: Solo UI (JSX y props). La lógica de formularios (estado, validación, envío) va en hooks; los hooks usan mutations y servicios. Las mutations viven en la carpeta `mutations/` y son las que llaman al servicio y muestran toasts / invalidan queries.
+1. **Componentes**: Solo UI (JSX y props), responsabilidad única y escalables (si crecen, extraer subcomponentes o lógica al hook). La lógica de formularios (estado, validación, envío) va en hooks; los hooks usan mutations y servicios. Las mutations viven en la carpeta `mutations/` y son las que llaman al servicio y muestran toasts / invalidan queries.
 2. **Hook**: Maneja `useQuery`, filtros y paginación; en formularios, estado local, validación y llamada a la mutation.
 3. **Store**: Maneja estado global de UI (múltiples modales que se abren desde distintos sitios).
-4. **UI**: Usa siempre los wrappers de `src/app/components/UI`.
+4. **UI**: Usa siempre los wrappers de `src/app/components/UI`. Botones: siempre HeroUI `Button` con `onPress`; contraste legible (ver `components-ui.md`, sección Botones).
 
 ### Formularios create/edit
 Un mismo formulario puede usarse para crear y editar. El hook (o el contenedor) recibe un identificador (id o entidad) y en el submit decide si llama a la mutation de create o update; el componente de formulario no necesita saber si está en modo crear o editar más allá de los valores iniciales que recibe.

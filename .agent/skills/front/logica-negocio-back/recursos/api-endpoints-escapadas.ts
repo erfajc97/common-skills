@@ -46,6 +46,9 @@ export const API_ENDPOINTS_ESCAPADAS = {
   // Upload (ADMIN)
   UPLOAD: "/upload",
 
+  // Contact (público)
+  CONTACT: "/contact",
+
   // Health
   HEALTH: "/",
 } as const;
